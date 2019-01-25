@@ -67,7 +67,7 @@ public class BusSchedule {
 
         String route = "https://www.communitytransit.org/busservice/schedules/route/" + routeID;
         try {
-            ArrayList<BusStops> destinations = outputBusStopSchedules(route);
+            ArrayList<BusStops> destinations = findBusStopSchedules(route);     //all BusStops on given route number
             System.out.println("The link for your route is: " + route + "\n");
             for (BusStops b : destinations) {
                 System.out.println("Destination: " + b.getDestination());
@@ -116,7 +116,7 @@ public class BusSchedule {
     }
 
     // Returns list of BusStops objects, extracted from HTML source through regex API
-    public static ArrayList<BusStops> outputBusStopSchedules (String route) throws IOException{
+    public static ArrayList<BusStops> findBusStopSchedules(String route) throws IOException{
         String text = readHTML(route);
 
         String subtext, subtext2, destination;
